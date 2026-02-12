@@ -1,0 +1,50 @@
+# Source code (we only publish dist)
+
+src
+tsconfig.json
+
+# Development files
+
+node_modules
+coverage
+tests
+**tests**
+
+# Git
+
+.git
+.gitignore
+.github
+
+# Local configs
+
+.env
+.env.*
+.vscode
+.idea
+
+# Logs
+
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Build leftovers
+
+*.ts
+*.tsx
+*.map
+
+# Misc
+
+examples
+sandbox
+temp
+scripts
+
+node_modules

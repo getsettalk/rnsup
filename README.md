@@ -3,9 +3,11 @@
 
 # RNSUP — React Native Support CLI
 
+![npm](https://img.shields.io/npm/v/rnsup?color=blue&label=npm)&nbsp;![license](https://img.shields.io/badge/license-MIT-green)&nbsp;![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
+
 **RNSUP** is a developer productivity CLI that converts a fresh React Native CLI project into a production-ready architecture.
 
-Instead of spending 2–3 days configuring navigation, alias paths, reanimated, gesture handler, axios setup and folder structure, you can do everything with **one command**.
+Instead of spending 3–6 hours configuring navigation, alias paths, reanimated, gesture handler, axios setup and folder structure, you can do everything with **one command**.
 
 ---
 
@@ -63,6 +65,37 @@ src/
 * Image import TypeScript support
 * Clean folder structure
 
+---
+
+## Installed packages (default)
+
+RNSUP installs a curated set of libraries into your project. These are added automatically when you run `npx rnsup setup` (some are optional via prompt):
+
+- `@react-navigation/native`
+- `react-native-screens`
+- `react-native-gesture-handler`
+- `react-native-reanimated`
+- `react-native-worklets` (Babel plugin integration)
+- `react-native-vector-icons`
+- `zustand`
+- `axios`
+- `@tanstack/react-query`
+- `react-native-mmkv`
+- navigation extras (conditional): `@react-navigation/native-stack`, `@react-navigation/bottom-tabs`, `@react-navigation/drawer`
+- optional (prompted): `react-native-svg`, `lucide-react-native`
+
+<div style="background:#fff3cd;border-left:6px solid #ffeeba;padding:12px;border-radius:6px">
+  <strong>⚠️ Warning</strong>
+  <p style="margin:6px 0 0">Many of the packages above include native code. After installation you <strong>must</strong> verify and complete any required native configuration (for iOS and Android). Common steps include:</p>
+  <ul style="margin:6px 0 0;padding-left:20px">
+    <li>Run <code>cd ios && pod install</code> on macOS</li>
+    <li>Follow the official docs for Reanimated, MMKV, react-native-svg and React Navigation</li>
+    <li>Check Android Gradle / manifest changes for native modules</li>
+  </ul>
+  <p style="margin:6px 0 0">If something looks off (build errors, missing icons, or runtime crashes), consult the package docs first — RNSUP does not (and cannot) run platform-specific installs for you.</p>
+</div>
+
+---
 ### Developer Experience
 
 * Auto import aliases (`@components`, `@services`, etc.)
@@ -86,9 +119,10 @@ npx rnsup setup
 ## Quick Start
 
 ### 1) Create React Native Project
+ for creating latest cli project !
 
 ```bash
-npx react-native@latest init MyApp
+npx create-rn
 cd MyApp
 ```
 
@@ -123,6 +157,9 @@ npx rnsup setup
 
 ### Generate Screen
 
+> Here `s` mean `screen`, and `g` mean `generate`
+
+
 ```
 rnsup g s Login
 rnsup g s auth/Login
@@ -140,6 +177,8 @@ src/features/auth/LoginScreen.tsx
 ---
 
 ### Generate Component
+
+> Here `c` mean `component`
 
 ```
 rnsup g c Button
@@ -247,79 +286,6 @@ Recommended workflow:
 
 This ensures aliases and exports always remain correct.
 
----
-
-## Publishing to NPM
-
-### 1) Login
-
-Create an account at:
-https://www.npmjs.com
-
-Then:
-
-```bash
-npm login
-```
-
----
-
-### 2) Prepare package.json
-
-Make sure:
-
-```json
-{
-  "name": "rnsup",
-  "version": "1.0.0",
-  "bin": {
-    "rnsup": "bin/rnsup.js"
-  }
-}
-```
-
----
-
-### 3) Build project
-
-```
-npm run build
-```
-
----
-
-### 4) Publish
-
-```
-npm publish --access public
-```
-
-Your package is now live.
-
----
-
-## Using After Publish
-
-Anyone can run:
-
-```bash
-npx rnsup setup
-```
-
-No installation required.
-
----
-
-## Updating Package
-
-After changes:
-
-```
-npm version patch
-npm publish
-```
-
----
 
 ## Contribution
 

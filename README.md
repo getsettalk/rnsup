@@ -1,336 +1,246 @@
-<img width="1536" height="1024" alt="1000241861" src="https://github.com/user-attachments/assets/3a35bc32-3413-40e5-8355-5db4806923a4" />
-
+<img width="1536" height="1024" alt="RNSUP React Native Setup" src="https://github.com/user-attachments/assets/3a35bc32-3413-40e5-8355-5db4806923a4" />
 
 # RNSUP — React Native Support CLI
 
-![npm](https://img.shields.io/npm/v/rnsup?color=blue&label=npm)&nbsp;![license](https://img.shields.io/badge/license-MIT-green)&nbsp;![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
+![npm](https://img.shields.io/npm/v/rnsup?color=blue&label=npm) ![license](https://img.shields.io/badge/license-MIT-green) ![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
 
-**RNSUP** is a developer productivity CLI that converts a fresh React Native CLI project into a production-ready architecture.
+**RNSUP** helps you set up a production-ready React Native project in minutes instead of hours.
 
-Instead of spending 3–6 hours configuring navigation, alias paths, reanimated, gesture handler, axios setup and folder structure, you can do everything with **one command**.
-
----
-
-## Why RNSUP?
-
-Starting a React Native CLI project usually requires:
-
-* Installing React Navigation dependencies
-* Configuring Reanimated
-* Adding Gesture Handler import
-* Setting up TypeScript aliases
-* Creating folder structure
-* Writing axios interceptors
-* Adding responsive utilities
-* Supporting image imports in TypeScript
-
-Most developers repeat this setup for every project.
-
-**RNSUP automates all of it.**
+What normally takes 3–6 hours of manual configuration — installation, setup, folder structure, aliases, API client setup — gets done automatically with a single command.
 
 ---
 
-## What RNSUP Does
+## Features at a Glance
 
-After running setup, your project automatically gets:
-
-### Configuration
-
-* React Navigation dependencies installed
-* Reanimated + Worklets configured
-* Gesture Handler patched
-* Babel alias configuration
-* TypeScript path aliases
-* Lockfile conflict handled (npm/yarn)
-
-### Architecture
-
-```
-src/
-  components/
-  screens/
-  services/
-  utils/
-  hooks/
-  store/
-  theme/
-  assets/
-  types/
-```
-
-### Utilities Added
-
-* Axios API client with interceptors
-* Responsive screen helpers
-* Image import TypeScript support
-* Clean folder structure
+| Feature | What You Get |
+|---------|-------------|
+| **Navigation** | React Navigation with preset stacks configured |
+| **Performance** | Reanimated + Worklets for smooth animations |
+| **Gestures** | Gesture Handler pre-integrated |
+| **Routing** | TypeScript paths and Babel aliases |
+| **APIs** | Axios with interceptors ready to use |
+| **Utilities** | Responsive helpers, image imports, TypeScript support |
+| **State** | Zustand store setup with TypeScript |
+| **Generators** | CLI commands for screens, components, and folders |
+| **Structure** | Pre-built folder organization |
 
 ---
 
-## Installed packages (default)
+## Install & Setup
 
-RNSUP installs a curated set of libraries into your project. These are added automatically when you run `npx rnsup setup` (some are optional via prompt):
-
-- `@react-navigation/native`
-- `react-native-screens`
-- `react-native-gesture-handler`
-- `react-native-reanimated`
-- `react-native-worklets` (Babel plugin integration)
-- `react-native-vector-icons`
-- `zustand`
-- `axios`
-- `@tanstack/react-query`
-- `react-native-mmkv`
-- navigation extras (conditional): `@react-navigation/native-stack`, `@react-navigation/bottom-tabs`, `@react-navigation/drawer`
-- optional (prompted): `react-native-svg`, `lucide-react-native`
-
-<div style="background:#fff3cd;border-left:6px solid #ffeeba;padding:12px;border-radius:6px">
-  <strong>⚠️ Warning</strong>
-  <p style="margin:6px 0 0">Many of the packages above include native code. After installation you <strong>must</strong> verify and complete any required native configuration (for iOS and Android). Common steps include:</p>
-  <ul style="margin:6px 0 0;padding-left:20px">
-    <li>Run <code>cd ios && pod install</code> on macOS</li>
-    <li>Follow the official docs for Reanimated, MMKV, react-native-svg and React Navigation</li>
-    <li>Check Android Gradle / manifest changes for native modules</li>
-  </ul>
-  <p style="margin:6px 0 0">If something looks off (build errors, missing icons, or runtime crashes), consult the package docs first — RNSUP does not (and cannot) run platform-specific installs for you.</p>
-</div>
-
----
-### Developer Experience
-
-* Auto import aliases (`@components`, `@services`, etc.)
-* Code generators (screens & components)
-* History tracking
-
----
-
-## Installation
-
-You DO NOT install RNSUP globally.
-
-Use directly via npx:
+No global installation needed. Just run:
 
 ```bash
-npx rnsup setup
-```
-
----
-
-## Quick Start
-
-### 1) Create React Native Project
- for creating latest cli project !
-
-```bash
-npx create-rn
+npx create-rn MyApp
 cd MyApp
-```
-
-### 2) Run RNSUP
-
-```bash
 npx rnsup setup
 ```
 
-Follow the prompts.
-
-After setup:
+Follow the prompts to select your package manager. That's it—your project is ready.
 
 ```bash
 npx react-native start --reset-cache
 npx react-native run-android
 ```
 
-Your project is ready.
+---
+
+## What Gets Installed
+
+RNSUP automatically installs and configures these packages:
+
+| Package | Purpose | Type |
+|---------|---------|------|
+| `@react-navigation/native` | Screen navigation | Required |
+| `react-native-gesture-handler` | Touch gesture support | Required |
+| `react-native-reanimated` | Smooth animations | Required |
+| `react-native-screens` | Performance optimization | Required |
+| `axios` | HTTP client | Required |
+| `zustand` | State management | Required |
+| `@tanstack/react-query` | Data fetching | Required |
+| `react-native-mmkv` | Fast storage | Required |
+| `react-native-vector-icons` | Icon library | Required |
+| `@react-navigation/native-stack` | Stack navigation | Optional |
+| `@react-navigation/bottom-tabs` | Tab navigation | Optional |
+| `react-native-svg` | SVG support | Optional |
+| `lucide-react-native` | Icon set | Optional |
+
+⚠️ **Note:** Many packages include native code. After setup, you'll need to complete native configuration for iOS and Android (pod install, gradle sync, manifest updates). Check the official docs for each package.
+
+---
+
+## Project Structure
+
+After setup, your project will have:
+
+```
+src/
+├── components/     # Reusable UI components
+├── screens/        # App screens/pages
+├── services/       # API calls & external services
+├── utils/          # Helper functions
+├── hooks/          # Custom React hooks
+├── store/          # State management
+├── theme/          # Colors, typography, styling
+├── assets/         # Images, fonts, static files
+└── types/          # TypeScript types & interfaces
+```
 
 ---
 
 ## Commands
 
-### Setup Project
+### Generate a Screen
 
-```
-npx rnsup setup
-```
-
----
-
-### Generate Screen
-
-> Here `s` mean `screen`, and `g` mean `generate`
-
-
-```
-rnsup g s Login
-rnsup g s auth/Login
-rnsup g s features/auth/Login
+```bash
+rnsup g s LoginScreen
+rnsup g s auth/LoginScreen
+rnsup g s features/auth/LoginScreen
 ```
 
-Examples created:
+Choose from: **Basic**, **List**, **Form**, or **Detail** templates.
 
-```
-src/screens/LoginScreen.tsx
-src/auth/LoginScreen.tsx
-src/features/auth/LoginScreen.tsx
-```
+### Generate a Component
 
----
-
-### Generate Component
-
-> Here `c` mean `component`
-
-```
+```bash
 rnsup g c Button
-rnsup g c ui/forms/Input
+rnsup g c ui/Card
+rnsup g c forms/TextInput
 ```
 
-Created:
+Creates `.tsx` by default (press Enter) or choose `.jsx`.
 
-```
-src/components/Button.tsx
-src/components/ui/forms/Input.tsx
-```
+### Generate a Folder
 
----
-
-### Generate Folder / Directory
-
-> Here `d` mean `directory`, and `g` mean `generate`
-
-Create folders/directories at any location with automatic alias registration and optional `index.ts` generation:
-
-```
-rnsup g d features
-rnsup g d src/store
+```bash
+rnsup g d themes
+rnsup g d src/api
 rnsup g d src/utils/helpers
 ```
 
-Examples created:
+Auto-registers TypeScript aliases for `src/` folders.
 
+### View Project Structure
+
+```bash
+rnsup view           # Show raw structure
+rnsup view -p        # Show with icons and colors
+rnsup view --time    # Show with timestamps
+rnsup view -p --time # Pretty + timestamps
 ```
-features/
-src/store/
-src/utils/helpers/
-```
 
-**Features:**
-
-- 📁 Colored output showing folder details
-- ✅ Confirmation before creating
-- 📝 Optional `index.ts` file generation (for exports)
-- 🔗 Auto-alias registration for `src/` folders
-- 📋 History tracking
-
-**Notes:**
-
-- If folder path starts with `src/`, it will be created inside `src/` and alias will be registered
-- If just a name is provided (e.g., `rnsup g d config`), folder is created at project root
-- Supports nested paths: `rnsup g d src/features/auth/screens`
+Choose between Root level or src/ folder when prompted.
 
 ---
 
-## Auto Alias Support
+## Usage Examples
 
-You can import without relative paths.
+### Import Components (No Relative Paths)
 
 Instead of:
-
-```ts
+```typescript
 import Button from '../../../components/Button';
 ```
 
 Use:
-
-```ts
+```typescript
 import Button from '@components/Button';
 ```
 
-Aliases automatically configured:
+Automatically configured aliases:
+- `@components` → `src/components/`
+- `@screens` → `src/screens/`
+- `@services` → `src/services/`
+- `@utils` → `src/utils/`
+- `@hooks` → `src/hooks/`
+- `@store` → `src/store/`
+- `@theme` → `src/theme/`
+- `@assets` → `src/assets/`
 
-```
-@components
-@services
-@utils
-@hooks
-@store
-@theme
-@assets
-```
+### Use the API Client
 
-New folders inside `src` automatically get alias support.
-
----
-
-## Axios Usage
-
-```ts
+```typescript
 import api from '@services/api/client';
 
+// GET request
 const users = await api.get('/users');
+
+// POST request  
+const response = await api.post('/login', { email, password });
 ```
 
-Interceptors already configured.
+Interceptors are pre-configured for error handling and auth tokens.
 
----
+### Responsive Layouts
 
-## Responsive Utility
+```typescript
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from '@utils/responsive-screen';
 
-```ts
-import { widthPercentageToDP as wp } from '@utils/responsive-screen';
-
-<View style={{ width: wp(80) }} />
+<View style={{ width: wp(80), height: hp(50) }} />
 ```
 
----
+Works on all device sizes without manual breakpoints.
 
-## Image Import Support
+### Import Images in TypeScript
 
-```ts
+```typescript
 import logo from '@assets/logo.png';
 
-<Image source={logo} />
+<Image source={logo} style={{ width: 100, height: 100 }} />
 ```
 
-No TypeScript error.
+No TypeScript errors—types are automatically set up.
 
 ---
 
-## Why It Is Useful
+## Auto Aliases
 
-RNSUP removes repetitive setup work and enforces a consistent architecture across projects and teams.
+New folders inside `src/` automatically get alias support:
 
-Benefits:
+```bash
+rnsup g d src/modals
+# Now use: import Modal from '@modals/MyModal';
+```
 
-* Saves 3–6 hours per project
-* Prevents configuration mistakes
-* Standardizes project structure
-* Faster onboarding for new developers
-* Clean import paths
-* Production-ready base
+Aliases update in both TypeScript `tsconfig.json` and Babel `.babelrc`.
 
 ---
 
 ## Best Practices
 
-Recommended workflow:
+1. **Always use generators** — Keeps aliases and structure consistent
+2. **Avoid manual folders** — Use `rnsup g d` instead
+3. **Keep folder names consistent** — Use kebab-case or camelCase, not spaces
+4. **Update native config** — Don't skip iOS/Android setup
+5. **Commit early** — Make a git commit right after `rnsup setup`
 
-1. Create project
-2. Run `rnsup setup`
-3. Only create screens/components using `rnsup g`
-4. Avoid manual folder creation inside `src`
+---
 
-This ensures aliases and exports always remain correct.
+## Troubleshooting
 
+**Error: "Not a React Native CLI project"**
+- Run `rnsup setup` from your React Native project root (where `package.json` exists)
 
-## Contribution
+**Error: "Selected package manager is not installed"**
+- Install npm, yarn, or pnpm first
 
-Pull requests are welcome.
+**Native build fails after setup**
+- Run `cd ios && pod install` (macOS only)
+- Check your Android SDK and NDK are up to date
+- Read the official docs for each native package
 
-If you find a bug or want a feature, open an issue.
+**Aliases not working**
+- Run `npx react-native start --reset-cache`
+- If still broken, check `tsconfig.json` has correct paths
+
+---
+
+## Contributing
+
+Found a bug or want a feature? Open an issue or submit a PR at dev branch.
 
 ---
 
 ## License
 
-MIT License
+MIT © 2026

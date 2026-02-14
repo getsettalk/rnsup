@@ -2,21 +2,41 @@ import fs from 'fs-extra';
 import path from 'path';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
-import { componentTemplate } from '../templates/component';
+import { getComponentTemplate, ComponentType } from '../templates/componentTemplates';
 import { parseComponentName } from '../utils/parseComponentName';
 import { registerAlias } from '../utils/aliasManager';
 import { addHistory } from '../utils/history';
+import { handleCancel } from '../utils/handleCancel';
 
 export async function generateComponent(input: string) {
   try {
     const { componentName, fullDir, relativeDir } =
       parseComponentName(input);
 
-    const filePath = path.join(fullDir, `${componentName}.tsx`);
+    // Ask for file extension
+    const { fileExtension } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'fileExtension',
+        message: 'Enter file extension:',
+        choices: [
+          { name: 'TypeScript (tsx) - Default, Recommended', value: 'tsx' },
+          { name: 'JavaScript (jsx)', value: 'jsx' }
+        ],
+        default: 'tsx'
+      }
+    ]);
 
-    console.log('\nComponent details:');
-    console.log('Name:', componentName);
-    console.log('Directory:', relativeDir);
+    const filePath = path.join(fullDir, `${componentName}.${fileExtension}`);
+
+    // Show colored details
+    console.log('\n' + chalk.cyan.bold('🏗️  Component Creation Details'));
+    console.log(chalk.gray('─'.repeat(50)));
+    console.log(chalk.yellow('Name:      '), chalk.cyan(componentName));
+    console.log(chalk.yellow('Extension: '), chalk.magenta(fileExtension.toUpperCase()));
+    console.log(chalk.yellow('Location:  '), chalk.white(relativeDir));
+    console.log(chalk.yellow('File:      '), chalk.dim(`${componentName}.${fileExtension}`));
+    console.log(chalk.gray('─'.repeat(50)));
 
     // overwrite check
     if (await fs.pathExists(filePath)) {
@@ -30,7 +50,7 @@ export async function generateComponent(input: string) {
       ]);
 
       if (!overwrite) {
-        console.log(chalk.yellow('Cancelled.'));
+        console.log(chalk.yellow('Operation cancelled.'));
         return;
       }
     }
@@ -39,12 +59,15 @@ export async function generateComponent(input: string) {
       {
         type: 'confirm',
         name: 'confirm',
-        message: `Create ${componentName} in ${relativeDir}?`,
+        message: chalk.green(`Create ${componentName} (${fileExtension.toUpperCase()})?`),
         default: true
       }
     ]);
 
-    if (!confirm) return;
+    if (!confirm) {
+      console.log(chalk.yellow('Cancelled.'));
+      return;
+    }
 
     // create directory
     await fs.ensureDir(fullDir);
@@ -52,25 +75,17 @@ export async function generateComponent(input: string) {
     // ensure alias (for nested components like ui/forms)
     await registerAlias(relativeDir);
 
-    // write component
-    await fs.writeFile(filePath, componentTemplate(componentName));
+    // write component with simple template
+    const template = getComponentTemplate(componentName, 'presentational');
+    await fs.writeFile(filePath, template);
 
-    // create index export
-    const indexFile = path.join(fullDir, 'index.ts');
-    const exportLine = `export { default as ${componentName} } from './${componentName}';\n`;
+    await addHistory(`Generated component ${componentName} (${fileExtension})`);
 
-    if (await fs.pathExists(indexFile)) {
-      const existing = await fs.readFile(indexFile, 'utf8');
-      if (!existing.includes(componentName))
-        await fs.appendFile(indexFile, exportLine);
-    } else {
-      await fs.writeFile(indexFile, exportLine);
-    }
-
-    await addHistory(`Generated component ${componentName}`);
-
-    console.log(chalk.green(`\n${componentName} created successfully.`));
-  } catch (err) {
-    console.error(err);
+    console.log(chalk.green(`\n✨ Component ${chalk.bold(componentName)} created successfully!`));
+    console.log(chalk.gray(`Location: ${relativeDir}`));
+    console.log(chalk.gray(`Extension: ${fileExtension}`));
+    console.log();
+  } catch (err: any) {
+    handleCancel(err);
   }
 }

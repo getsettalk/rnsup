@@ -4,6 +4,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { addHistory } from '../utils/history';
 import { registerAlias } from '../utils/aliasManager';
+import { handleCancel } from '../utils/handleCancel';
 
 
 export async function generateFolder(input: string) {
@@ -106,7 +107,7 @@ export async function generateFolder(input: string) {
     console.log(chalk.green(`\n✨ Folder ${chalk.bold(folderName)} created successfully!`));
     console.log(chalk.gray(`Location: ${relativeDir}`));
     console.log();
-  } catch (err) {
-    console.error(chalk.red('Error creating folder:'), err);
+  } catch (err: any) {
+    handleCancel(err);
   }
 }

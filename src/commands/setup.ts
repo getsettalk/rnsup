@@ -40,7 +40,8 @@ export async function runSetup() {
 
         const manager = await selectOption(
             'Which package manager do you want to use?',
-            ['npm', 'yarn', 'pnpm'] as const
+            ['npm', 'yarn', 'pnpm'] as const,
+            'yarn'
         ) as PackageManager;
 
         /* ---------- 3. Validate manager installed ---------- */

@@ -3,6 +3,7 @@ import { runSetup } from './commands/setup';
 import { generateScreen } from './commands/generateScreen';
 import { generateComponent } from './commands/generateComponent';
 import { generateFolder } from './commands/generateFolder';
+import { viewStructure } from './commands/viewStructure';
 
 
 const program = new Command();
@@ -18,6 +19,16 @@ program
   .command('setup')
   .description('Configure React Native project')
   .action(runSetup);
+
+/* ---------- View Structure ---------- */
+
+program
+  .command('view')
+  .alias('v')
+  .description('View project folder structure')
+  .option('-p, --pretty', 'Show with icons, colors and file sizes')
+  .option('--time', 'Show file/folder creation date and time')
+  .action(viewStructure);
 
 /* ---------- Generator Root ---------- */
 

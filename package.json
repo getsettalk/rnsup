@@ -1,6 +1,6 @@
 {
   "name": "rnsup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "RNSUP is a CLI tool that converts a fresh React Native CLI project into a production-ready architecture with navigation, alias paths, utilities and code generators.",
   "main": "dist/index.js",
   "type": "commonjs",

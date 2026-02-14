@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import { runSetup } from './commands/setup';
 import { generateScreen } from './commands/generateScreen';
 import { generateComponent } from './commands/generateComponent';
+import { generateFolder } from './commands/generateFolder';
 
 
 const program = new Command();
@@ -33,11 +34,21 @@ generate
   .action(generateScreen);
 
 
+/* ---------- Component ---------- */
+
 generate
   .command('component <name>')
   .alias('c')
   .description('Generate a component')
   .action(generateComponent);
+
+/* ---------- Folder ---------- */
+
+generate
+  .command('folder <name>')
+  .alias('d')
+  .description('Create a folder / directory')
+  .action(generateFolder);
 
 /* attach to main program */
 program.addCommand(generate);

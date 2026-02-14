@@ -194,6 +194,42 @@ src/components/ui/forms/Input.tsx
 
 ---
 
+### Generate Folder / Directory
+
+> Here `d` mean `directory`, and `g` mean `generate`
+
+Create folders/directories at any location with automatic alias registration and optional `index.ts` generation:
+
+```
+rnsup g d features
+rnsup g d src/store
+rnsup g d src/utils/helpers
+```
+
+Examples created:
+
+```
+features/
+src/store/
+src/utils/helpers/
+```
+
+**Features:**
+
+- 📁 Colored output showing folder details
+- ✅ Confirmation before creating
+- 📝 Optional `index.ts` file generation (for exports)
+- 🔗 Auto-alias registration for `src/` folders
+- 📋 History tracking
+
+**Notes:**
+
+- If folder path starts with `src/`, it will be created inside `src/` and alias will be registered
+- If just a name is provided (e.g., `rnsup g d config`), folder is created at project root
+- Supports nested paths: `rnsup g d src/features/auth/screens`
+
+---
+
 ## Auto Alias Support
 
 You can import without relative paths.

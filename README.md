@@ -80,6 +80,7 @@ src/
 ├── services/       # API calls & external services
 ├── utils/          # Helper functions
 ├── hooks/          # Custom React hooks
+├── navigation/     # Navigation Screen (Stack, Tab, Drawer)
 ├── store/          # State management
 ├── theme/          # Colors, typography, styling
 ├── assets/         # Images, fonts, static files
@@ -156,6 +157,8 @@ Automatically configured aliases:
 - `@store` → `src/store/`
 - `@theme` → `src/theme/`
 - `@assets` → `src/assets/`
+- `@types` → `src/types/`
+- `@navigation` → `src/navigation/`
 
 ### Use the API Client
 

@@ -13,7 +13,9 @@ export async function createBaseFolders() {
     'src/utils',
     'src/store',
     'src/theme',
-    'src/assets'
+    'src/assets',
+    'src/types',
+    'src/navigation'
   ];
 
   for (const folder of folders) {

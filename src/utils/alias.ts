@@ -22,7 +22,9 @@ export async function setupTsAlias() {
         '@store/*': ['src/store/*'],
         '@hooks/*': ['src/hooks/*'],
         '@theme/*': ['src/theme/*'],
-        '@assets/*': ['src/assets/*']
+        '@assets/*': ['src/assets/*'],
+        '@types/*': ['src/types/*'],
+        '@navigation/*': ['src/navigation/*']
     });
 
     await fs.writeJson(tsconfigPath, tsconfig, { spaces: 2 });
@@ -48,7 +50,9 @@ module.exports = {
         '@store': './src/store',
         '@hooks': './src/hooks',
         '@theme': './src/theme',
-        '@assets': './src/assets'
+        '@assets': './src/assets',
+        '@types': './src/types',
+        '@navigation': './src/navigation'
       }
     }],
     'react-native-worklets/plugin'

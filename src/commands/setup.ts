@@ -114,6 +114,7 @@ export async function runSetup() {
             'react-native-screens',
             'react-native-advanced-checkbox',
             'react-native-gesture-handler',
+            'react-native-nitro-modules',
             'react-native-reanimated',
             'react-native-worklets',
             'react-native-vector-icons',

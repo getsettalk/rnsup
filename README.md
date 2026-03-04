@@ -59,7 +59,6 @@ RNSUP automatically installs and configures these packages:
 | `zustand` | State management | Required |
 | `@tanstack/react-query` | Data fetching | Required |
 | `react-native-mmkv` | Fast storage | Required |
-| `react-native-vector-icons` | Icon library | Required |
 | `@react-navigation/native-stack` | Stack navigation | Optional |
 | `@react-navigation/bottom-tabs` | Tab navigation | Optional |
 | `react-native-svg` | SVG support | Optional |

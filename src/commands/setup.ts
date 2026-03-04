@@ -117,7 +117,6 @@ export async function runSetup() {
             'react-native-nitro-modules',
             'react-native-reanimated',
             'react-native-worklets',
-            'react-native-vector-icons',
             'zustand',
             'axios',
             '@tanstack/react-query',

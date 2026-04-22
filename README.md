@@ -26,22 +26,57 @@ What normally takes 3–6 hours of manual configuration — installation, setup,
 
 ---
 
-## Install & Setup
+## Installation & Usage
 
-No global installation needed. Just run:
+You can use **RNSUP** in two ways. We recommend the **Global Installation** for the best experience.
+
+### Option 1: Global Installation (Recommended)
+This allows you to use the `rnsup` command directly from any folder.
 
 ```bash
-npx create-rn MyApp
-cd MyApp
+npm install -g rnsup
+```
+
+Now you can simply run:
+```bash
+rnsup setup
+rnsup g s HomeScreen
+```
+
+---
+
+### Option 2: Use with NPX (No Install)
+If you don't want to install it globally, use `npx` before every command:
+
+```bash
 npx rnsup setup
+npx rnsup g s HomeScreen
 ```
 
-Follow the prompts to select your package manager. That's it—your project is ready.
+---
 
-```bash
-npx react-native start --reset-cache
-npx react-native run-android
-```
+## Quick Start (New Project)
+
+1. Create a fresh React Native project:
+   ```bash
+   npx create-rn MyApp
+   cd MyApp
+   ```
+
+2. Run the RNSUP setup:
+   ```bash
+   rnsup setup  # or: npx rnsup setup
+   ```
+
+3. Complete the native setup:
+   ```bash
+   # For iOS (Mac only)
+   cd ios && pod install && cd ..
+
+   # Start the project
+   npx react-native start --reset-cache
+   npx react-native run-android # or run-ios
+   ```
 
 ---
 
@@ -245,4 +280,4 @@ Found a bug or want a feature? Open an issue or submit a PR at dev branch.
 
 ## License
 
-MIT © 2026
+MIT © 2026 - `rnsup  = react-native support cli`
